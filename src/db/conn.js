@@ -5,7 +5,7 @@ mongoose.connect("mongodb://localhost:27017/crops-api", {
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(() => {
-    console.log("connection is successful");
+    console.log("****************************Mongodb Connected****************************");
 }).catch((e) =>{
     console.log("No connection");
 })
