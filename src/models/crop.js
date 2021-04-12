@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const express = require("express");
-
+const { urlencoded } = require("express");
 
 
 var crops = new mongoose.Schema({
@@ -10,23 +10,13 @@ var crops = new mongoose.Schema({
   
   });
 
-var types = new mongoose.Schema({
-    variety: String,
-    desc: String
-});
-
-var pest = new mongoose.Schema({
-     name:String,
-     control: String
-})
 
 const cropSchema = new mongoose.Schema({
     image: String,
-    name: String,
-    info: [crops],
-    var: [types], 
-    pesticide: [pest]
-
+    name: {type:String, 
+          unique:true },
+    info: [crops]
+   
 });
 
 // create a new collection
@@ -38,19 +28,11 @@ module.exports = Crop;
 
 
 
-// var data  = new  Crop({
-//     name: "Winter crops",
-//     info: [
-//         {
-//             heading: "Maize",
-//             description: "Khushbu is fond of it."
+var data  = new  Crop({
+ 
 
-//     },{
-//             heading: "Wheat",
-//             description: "We eat is daily."
 
-//     }]
-// })
+})
 
 // data.save(function (err, data) {
 //     if (err) return console.log(err.message)
